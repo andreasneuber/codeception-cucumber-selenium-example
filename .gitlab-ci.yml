@@ -1,0 +1,42 @@
+image: ubuntu:22.04
+
+stages:
+  - testing
+
+E2E-Testing:
+  stage: testing
+  script:
+    - export DEBIAN_FRONTEND="noninteractive"
+    - apt-get update
+    - apt-get install -yq build-essential apt-transport-https ca-certificates software-properties-common python3-pip curl unzip wget
+    - apt-get install -yq libnss3-dev libasound2 libxss1 libappindicator3-1 gconf-service
+    - apt-get install -yq libgconf-2-4 libpango1.0-0 xdg-utils fonts-liberation libgbm1 libu2f-udev libvulkan1
+    - add-apt-repository -y ppa:ondrej/php && apt-get update
+    - apt-get install -y php8.0-cli php8.0-curl php8.0-mbstring php8.0-xml php8.0-zip
+    - php -v
+    - php -m
+
+    - curl -sS https://getcomposer.org/installer | php -- --version=2.5.5 --install-dir=/usr/local/bin --filename=composer
+    - composer install
+
+    - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+    - dpkg -i google-chrome*.deb
+    - rm google-chrome*.deb
+
+    # - version=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE")
+    # - wget -N https://chromedriver.storage.googleapis.com/${version}/chromedriver_linux64.zip
+    # - unzip chromedriver_linux64.zip
+    # - chmod +x chromedriver
+    # - cp chromedriver /usr/local/bin
+    # - rm chromedriver_linux64.zip chromedriver
+
+    - vendor/enm1989/chromedriver/bin/chromedriver --url-base=/wd/hub &
+    - sleep 5
+
+    - mv codeception.ci.yml codeception.yml
+
+    - php vendor/bin/codecept build
+    - php vendor/bin/codecept run --steps --html
+  artifacts:
+    paths:
+      - tests/_output/report.html

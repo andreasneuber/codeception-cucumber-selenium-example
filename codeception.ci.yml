@@ -1,0 +1,63 @@
+namespace: Tests
+support_namespace: Support
+
+# suite config
+suites:
+  acceptance:
+    actor: AcceptanceTester
+    path: .
+    modules:
+      enabled:
+        - Asserts
+        - WebDriver:
+            url: http://localhost:8000
+            browser: chrome
+            port: 9515
+            window_size: 1280x1696
+            capabilities:
+              chromeOptions:
+                args: [ "--headless", "--disable-gpu", "--no-sandbox" ] # Run Chrome in headless mode
+
+    # add Codeception\Step\Retry trait to AcceptanceTester to enable retries
+    step_decorators:
+      - Codeception\Step\ConditionalAssertion
+      - Codeception\Step\TryTo
+      - Codeception\Step\Retry
+
+extensions:
+  - Codeception\Extension\RunFailed
+  - Codeception\Extension\RunProcess:
+      0: vendor/enm1989/chromedriver/bin/chromedriver --url-base=/wd/hub || chromedriver --url-base=/wd/hub
+      sleep: 5
+
+params:
+  - env
+
+# Gherkin Step definitions
+# If all steps should be in class AcceptanceTester use below config
+#gherkin: []
+
+# If steps should be split up into several classes then use below config here
+gherkin:
+  contexts:
+    default:
+      - Tests\Support\AcceptanceTester
+      - Tests\Support\Step\Acceptance\AdminPrivilegesSteps
+      - Tests\Support\Step\Acceptance\ConcurrentWindowsSteps
+      - Tests\Support\Step\Acceptance\ConvertCelsiusSteps
+      - Tests\Support\Step\Acceptance\CreditcardSteps
+      - Tests\Support\Step\Acceptance\LoginSteps
+      - Tests\Support\Step\Acceptance\ProvideYourDetailsSteps
+      - Tests\Support\Step\Acceptance\UserAccountSteps
+
+# additional paths
+paths:
+  tests: tests
+  output: tests/_output
+  data: tests/Support/Data
+  support: tests/Support
+  envs: tests/_envs
+
+settings:
+  shuffle: false
+  lint: true

@@ -1,0 +1,31 @@
+trigger:
+  - none
+
+pool:
+  vmImage: 'ubuntu-22.04'
+
+steps:
+
+  - script: |
+      php -v
+      php -m
+      
+      sudo apt-get update
+      sudo apt-get install -yq libnss3-dev libasound2 libxss1 libappindicator3-1 gconf-service
+      sudo apt-get install -yq libgconf-2-4 libpango1.0-0 xdg-utils fonts-liberation libgbm1 libu2f-udev libvulkan1
+      
+      composer update
+      
+      vendor/enm1989/chromedriver/bin/chromedriver --url-base=/wd/hub &
+      sleep 5
+      
+      mv codeception.ci.yml codeception.yml
+      
+      php vendor/bin/codecept build
+      php vendor/bin/codecept run --steps --html
+    displayName: 'E2E Testing'
+    continueOnError: true
+
+  - publish: $(System.DefaultWorkingDirectory)/tests/_output/report.html
+    artifact: Codeception-Report
+    displayName: 'Artifacts'

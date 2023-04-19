@@ -1,0 +1,17 @@
+{
+    "require": {
+        "codeception/codeception": "^5.0",
+        "codeception/module-asserts": "^2.0.0",
+        "codeception/module-cli": "^2.0",
+        "codeception/module-db": "^3.0",
+        "codeception/module-filesystem": "^3.0.0",
+        "codeception/module-webdriver": "^3.0",
+        "enm1989/chromedriver": "*",
+        "ext-simplexml": "*",
+        "ext-json": "*",
+        "ext-iconv": "*",
+        "ext-dom": "*",
+        "ext-libxml": "*",
+        "php": "^8.0"
+    }
+}
