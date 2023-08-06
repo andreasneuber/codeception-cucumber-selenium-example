@@ -1,10 +1,10 @@
-# codeception-bdd
+# codeception-cucumber-selenium-example
 Example project of BDD implementation with Codeception
 
 ## Application under test
 The tests here were written to fit [https://github.com/andreasneuber/automatic-test-sample-site](https://github.com/andreasneuber/automatic-test-sample-site)
 
-README in this project explains how to start the sample site.
+README in that project explains how to start the sample site.
 
 ## Setup tests
 - `git clone`
