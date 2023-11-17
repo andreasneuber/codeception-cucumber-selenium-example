@@ -35,57 +35,68 @@ class Provide_Your_Details_Page extends Base_Page {
 		// you can inject other page objects here as well
 	}
 
-	public function provideFirstname( string $firstName ) {
+	public function provideFirstname( string $firstName ): void
+    {
 		$this->tester->waitForElementVisible( self::$inputFirstName );
 		$this->tester->fillField( self::$inputFirstName, $firstName );
 	}
 
-	public function provideLastName( string $lastName ) {
+	public function provideLastName( string $lastName ): void
+    {
 		$this->tester->waitForElementVisible( self::$inputLastName );
 		$this->tester->fillField( self::$inputLastName, $lastName );
 	}
 
-	public function provideStreet( string $street ) {
+	public function provideStreet( string $street ): void
+    {
 		$this->tester->waitForElementVisible( self::$inputStreet );
 		$this->tester->fillField( self::$inputStreet, $street );
 	}
 
-	public function provideCity( string $city ) {
+	public function provideCity( string $city ): void
+    {
 		$this->tester->waitForElementVisible( self::$inputCity );
 		$this->tester->fillField( self::$inputCity, $city );
 	}
 
-	public function provideZip( string $zipCode ) {
+	public function provideZip( string $zipCode ): void
+    {
 		$this->tester->waitForElementVisible( self::$inputZip );
 		$this->tester->fillField( self::$inputZip, $zipCode );
 	}
 
-	public function provideState( string $state ) {
+	public function provideState( string $state ): void
+    {
 		$this->tester->waitForElementVisible( self::$inputState );
 		$this->tester->fillField( self::$inputState, $state );
 	}
 
-	public function provideCountry( string $country ) {
+	public function provideCountry( string $country ): void
+    {
 		$this->tester->waitForElementVisible( self::$inputCountry );
 		$this->tester->fillField( self::$inputCountry, $country );
 	}
 
-	public function provideMobilePhoneNumber( string $number ) {
+	public function provideMobilePhoneNumber( string $number ): void
+    {
 		$this->tester->waitForElementVisible( self::$inputMobilePhoneNumber );
 		$this->tester->fillField( self::$inputMobilePhoneNumber, $number );
 	}
 
-	public function provideHomePhoneNumber( string $number ) {
+	public function provideHomePhoneNumber( string $number ): void
+    {
 		$this->tester->waitForElementVisible( self::$inputHomePhoneNumber );
 		$this->tester->fillField( self::$inputHomePhoneNumber, $number );
 	}
 
-	public function provideEmail( string $email ) {
+	public function provideEmail( string $email ): void
+    {
 		$this->tester->waitForElementVisible( self::$inputEmail );
 		$this->tester->fillField( self::$inputEmail, $email );
 	}
 
-	public function clickSubmitYourInformation() {
+	public function clickSubmitYourInformation(): void
+    {
 		$this->tester->waitForElementClickable(self::$btnSubmit );
 		$this->tester->click(self::$btnSubmit );
 	}

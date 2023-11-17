@@ -66,12 +66,14 @@ class User_Account_Page extends Base_Page {
 		$this->tester->click( self::$btn_save );
 	}
 
-	public function navigateToHumanResourcesSection() {
+	public function navigateToHumanResourcesSection(): void
+    {
 		$this->tester->waitForElementClickable( self::$linkHumanResources );
 		$this->tester->click( self::$linkHumanResources );
 	}
 
-	public function navigateToSalesSection() {
+	public function navigateToSalesSection(): void
+    {
 		$this->tester->waitForElementClickable( self::$linkSalesStatistics );
 		$this->tester->click( self::$linkSalesStatistics );
 	}

@@ -33,11 +33,13 @@ class Employee_Page extends Base_Page {
 		return $this->tester->pageHasElement( self::$titleFindEmployee );
 	}
 
-	public function fillEmployeeNameInput( $employeeName ) {
+	public function fillEmployeeNameInput( $employeeName ): void
+    {
 		$this->tester->fillField( self::$inputEmployeeName, $employeeName );
 	}
 
-	public function clickSearchBtn() {
+	public function clickSearchBtn(): void
+    {
 		$this->tester->click( self::$btnSearch );
 	}
 

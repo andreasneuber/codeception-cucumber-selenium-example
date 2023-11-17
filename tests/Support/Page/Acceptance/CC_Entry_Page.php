@@ -33,7 +33,8 @@ class CC_Entry_Page extends Base_Page {
 		string $ccnumber,
 		string $expiryDate,
 		string $cvv
-	) {
+	): void
+    {
 		$this->tester->waitForElementVisible( self::$inputCardname );
 		$this->tester->fillField( self::$inputCardname, $cardname );
 
@@ -47,7 +48,8 @@ class CC_Entry_Page extends Base_Page {
 		$this->tester->fillField( self::$inputCvv, $cvv );
 	}
 
-	public function submitPayment() {
+	public function submitPayment(): void
+    {
 		$this->tester->waitForElementClickable( self::$btnPayNow );
 		$this->tester->click( self::$btnPayNow );
 	}
