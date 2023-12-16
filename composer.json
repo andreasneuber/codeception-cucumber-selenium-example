@@ -6,7 +6,6 @@
         "codeception/module-db": "^3.1.0",
         "codeception/module-filesystem": "^3.0.0",
         "codeception/module-webdriver": "^3.2.0",
-        "enm1989/chromedriver": "*",
         "ext-simplexml": "*",
         "ext-json": "*",
         "ext-iconv": "*",
