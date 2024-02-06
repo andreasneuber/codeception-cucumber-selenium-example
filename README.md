@@ -56,21 +56,13 @@ files it will be used first, and `codeception.dist.yml` will be ignored.
 ## ChromeDriver + pipeline related...
 The ChromeDriver and Chrome Google Browser versions should be always the same.
 
-The recommended way to start ChromeDriver is using this in the codeception.yml file:
-```
-extensions:
-  - Codeception\Extension\RunProcess:
-      0: vendor/enm1989/chromedriver/bin/chromedriver --url-base=/wd/hub || chromedriver --url-base=/wd/hub
-      sleep: 5
-```
-
-If for some odd reason this is not working there are 2 alternatives:
+Get the latest Chromedriver for Linux first:
 
 ```
-# Alternative 1 - example .gitlab-ci.yml
+# .gitlab-ci.yml
 
-  - version=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE")
-  - wget -N https://chromedriver.storage.googleapis.com/${version}/chromedriver_linux64.zip
+  - version=$(curl -s https://googlechromelabs.github.io/chrome-for-testing/LATEST_RELEASE_STABLE)
+  - wget -N https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/${version}/linux64/chromedriver-linux64.zip
   - unzip chromedriver_linux64.zip
   - chmod +x chromedriver
   - cp chromedriver /usr/local/bin
@@ -80,9 +72,13 @@ If for some odd reason this is not working there are 2 alternatives:
   - sleep 5
 ```
 
+You can also skip the last 2 lines in above snippet and start ChromeDriver directly in your codeception.yml file:
 ```
-# Alternative 2 - example .gitlab-ci.yml
+extensions:
+  - Codeception\Extension\RunProcess:
+      0: chromedriver --url-base=/wd/hub
+      sleep: 5
+```
 
-  - vendor/enm1989/chromedriver/bin/chromedriver --url-base=/wd/hub &
-  - sleep 5
-```
+## To-Do
+Better handling of updating browser driver versions. 
