@@ -23,7 +23,9 @@ README in that project explains how to start the sample site.
 - Open file `codeception.yml` and add the new step definition class under "gherkin > contexts > default"
 
 ## How to run the tests locally
-`php vendor/bin/codecept run --steps --html`
+Start ChromeDriver: `chromedriver --url-base=/wd/hub`
+
+Then, best in another terminal window: `php vendor/bin/codecept run --steps --html`
 
 `--steps` gives you more detailed output what test is doing. `--html` generates a HTML report in folder `_output`.
 
@@ -48,7 +50,7 @@ or
 ## Running tests in pipeline
 File `codeception.ci.yml` should have your optimized values for the CI pipeline.
 
-The pipeline script will rename `codeception.ci.yml` to `codeception.yml`. This way in the hierarchy of config 
+The pipeline script will rename `codeception.ci.yml` to `codeception.yml`. This way in the hierarchy of config
 files it will be used first, and `codeception.dist.yml` will be ignored.
 
 ## ChromeDriver + pipeline related...
