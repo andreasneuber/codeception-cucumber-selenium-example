@@ -11,6 +11,6 @@
         "ext-iconv": "*",
         "ext-dom": "*",
         "ext-libxml": "*",
-        "php": "^8.0"
+        "php": "^8.3"
     }
 }
