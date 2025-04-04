@@ -1,6 +1,6 @@
 {
     "require": {
-        "codeception/codeception": "^5.0",
+        "codeception/codeception": "^5.2.1",
         "codeception/module-asserts": "^2.0.0",
         "codeception/module-cli": "^2.0",
         "codeception/module-db": "^3.1.0",
