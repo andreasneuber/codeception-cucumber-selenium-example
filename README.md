@@ -11,7 +11,7 @@ README in that project explains how to start the sample site.
 - `composer install`
 - Adjust config values in `codeception.dist.yml` as needed
 - `php vendor/bin/codecept build`
-- Start ChromeDriver `chromedriver --url-base=/wd/hub`
+- Start ChromeDriver `chromedriver --url-base=/wd/hub --port=9515`
 
 ## For developing new tests...
 - Create a new feature file: `php vendor/bin/codecept g:feature acceptance <name of file without .feature extension>`
@@ -23,7 +23,7 @@ README in that project explains how to start the sample site.
 - Open file `codeception.yml` and add the new step definition class under "gherkin > contexts > default"
 
 ## How to run the tests locally
-Start ChromeDriver: `chromedriver --url-base=/wd/hub`
+Start ChromeDriver: `chromedriver --url-base=/wd/hub --port=9515`
 
 Then, best in another terminal window: `php vendor/bin/codecept run --steps --html`
 
